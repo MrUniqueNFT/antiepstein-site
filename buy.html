@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anti-Epstein — Community Token</title>
+  <meta name="description" content="A community-led token for transparency, accountability, and support for survivors. Verify contract. Official links only." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Anti-Epstein — Community Token" />
+  <meta property="og:description" content="Transparency. Accountability. Support for survivors. Official links only." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" id="ogUrl" />
+  <meta property="og:image" content="" id="ogImage" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg:#0b0d12; --card:#111522; --text:#e9eefc; --muted:#9aa7c2;
+      --accent:#ff3b3b; --accent2:#ff8a00; --border:rgba(255,255,255,.08);
+      --shadow:0 12px 30px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,59,59,.18), transparent 60%),
+                  radial-gradient(1000px 500px at 90% 20%, rgba(255,138,0,.14), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 0 22px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .brand img{width:36px; height:36px; border-radius:10px; border:1px solid var(--border); object-fit:cover}
+    .pill{display:inline-flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius:14px; border:1px solid var(--border);
+      background:rgba(255,255,255,.04); color:var(--text); cursor:pointer;
+      transition:.15s transform ease,.15s background ease;
+      font-weight:700;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(255,59,59,.95), rgba(255,138,0,.85));
+      border:none; color:#0b0d12;
+    }
+    .btn.primary:hover{filter:saturate(1.05); transform:translateY(-1px)}
+    .hero{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch;
+      margin-top:6px;
+    }
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:18px;
+    }
+    h1{margin:8px 0 10px; font-size:40px; line-height:1.1}
+    @media (max-width: 520px){ h1{font-size:34px} }
+    .sub{color:var(--muted); font-size:15px; line-height:1.55; margin:0}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px}
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+    .kpi{padding:14px; border-radius:16px; border:1px solid var(--border); background:rgba(0,0,0,.15)}
+    .kpi b{display:block; font-size:14px; margin-bottom:6px}
+    .kpi span{color:var(--muted); font-size:13px; line-height:1.45}
+    .heroimg{
+      width:100%; height:100%; min-height:260px; border-radius:var(--radius);
+      border:1px solid var(--border); object-fit:cover;
+      background:
+        radial-gradient(600px 240px at 30% 20%, rgba(255,59,59,.22), transparent 60%),
+        radial-gradient(500px 220px at 70% 40%, rgba(255,138,0,.18), transparent 60%),
+        rgba(255,255,255,.02);
+    }
+    .section{margin-top:16px}
+    .section h2{margin:0 0 10px; font-size:18px}
+    .muted{color:var(--muted)}
+    .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+    .codebox{
+      width:100%; display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:12px 14px; border-radius:14px; border:1px dashed rgba(255,255,255,.16);
+      background:rgba(0,0,0,.22);
+      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:13px;
+    }
+    .small{font-size:12px; color:var(--muted)}
+    .foot{margin-top:14px; font-size:12px; color:rgba(233,238,252,.72); line-height:1.55}
+    .warn{color:rgba(255,255,255,.88)}
+    .tag{
+      display:inline-flex; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--muted);
+      font-size:12px; font-weight:700;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="" onerror="this.style.display='none'">
+        <div>
+          <div style="font-size:14px; opacity:.95">Anti-Epstein</div>
+          <div class="small">Official links only</div>
+        </div>
+      </div>
+      <div class="pill">
+        <a class="btn" id="xLink" target="_blank" rel="noopener">X</a>
+        <a class="btn" id="tgLink" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn primary" href="buy.html" id="buyBtn">Click Buy</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <span class="tag">Community token</span>
+        <h1>Transparency. Accountability. Support for survivors.</h1>
+        <p class="sub" id="missionText">
+          We stand against exploitation and abuse. This community-led token is a public signal for transparency
+          and accountability — and a reminder to verify facts, protect the vulnerable, and support survivors.
+          No hype. No promises. Official links only.
+        </p>
+
+        <div class="grid">
+          <div class="kpi">
+            <b>Verify first</b>
+            <span>Always confirm the contract address. Beware of copycats and fake links.</span>
+          </div>
+          <div class="kpi">
+            <b>Community-led</b>
+            <span>Built around a stance and a message — not financial guarantees.</span>
+          </div>
+          <div class="kpi">
+            <b>Risk disclosure</b>
+            <span>Crypto is risky and volatile. This is not financial advice.</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Contract Address (CA)</h2>
+          <div class="codebox">
+            <span id="caText">PUT_CONTRACT_ADDRESS_HERE</span>
+            <button class="btn" id="copyBtn" type="button">Copy</button>
+          </div>
+          <div class="small">Tip: Only trust the address shown on this site & official social profiles.</div>
+        </div>
+
+        <div class="section">
+          <h2>How to buy</h2>
+          <div class="small">
+            1) Open the official buy page via <b>Click Buy</b> •
+            2) Verify the CA matches above •
+            3) Proceed only if you understand the risks.
+          </div>
+        </div>
+
+        <div class="foot">
+          <div class="warn"><b>Disclaimer:</b> Not financial advice. No guarantees. Do your own research.</div>
+          <div class="muted">If you see a page or account promising “guaranteed profit” or “insider info,” it is likely a scam.</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px">
+        <!-- Optional hero image -->
+        <img class="heroimg" src="assets/hero.jpg" alt="Hero" onerror="this.outerHTML='<div class=&quot;heroimg&quot;></div>'">
+        <div class="section">
+          <h2>Why this exists</h2>
+          <div class="small">
+            This page is designed to centralize <b>official links</b>, reduce confusion, and help people avoid fakes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section card" style="margin-top:18px">
+      <h2>Official links</h2>
+      <div class="row">
+        <a class="btn" id="siteLink" target="_blank" rel="noopener">Website</a>
+        <a class="btn" id="pumpLink" target="_blank" rel="noopener">Pump.fun</a>
+      </div>
+      <div class="small" style="margin-top:10px">
+        Keep all announcements on the same official channels to prevent impersonation.
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ====== EDIT THESE ======
+  const SITE_URL = "https://antiepsteintoken.pages.dev/#";
+  const BUY_URL  = "https://pump.fun/coin/8ydTGTnEvLMLahVvrZFndpp93gm4ZpLNy15N1dLspump";
+  const CONTRACT_ADDRESS = "8ydTGTnEvLMLahVvrZFndpp93gm4ZpLNy15N1dLspump";
+  const X_URL = "https://x.com/AntiEpsteinSOL";
+  const TG_URL = "https://t.me/AntiEpsteinToken";
+  const OG_IMAGE = SITE_URL + "assets/hero.jpg"; // optional
+  // ========================
+
+  // Fill links
+  document.getElementById("siteLink").href = SITE_URL;
+  document.getElementById("pumpLink").href = BUY_URL;
+  document.getElementById("xLink").href = X_URL;
+  document.getElementById("tgLink").href = TG_URL;
+
+  // CA
+  const caText = document.getElementById("caText");
+  caText.textContent = CONTRACT_ADDRESS;
+
+  // Copy
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(CONTRACT_ADDRESS);
+      const btn = document.getElementById("copyBtn");
+      const old = btn.textContent;
+      btn.textContent = "Copied ✓";
+      setTimeout(() => btn.textContent = old, 900);
+    } catch (e) {
+      alert("Copy failed. Please copy manually.");
+    }
+  });
+
+  // OG tags
+  document.getElementById("ogUrl").setAttribute("content", SITE_URL);
+  document.getElementById("ogImage").setAttribute("content", OG_IMAGE);
+
+  // Make Buy button go to redirect page (buy.html)
+  document.getElementById("buyBtn").href = "buy.html";
+</script>
+</body>
+</html>
