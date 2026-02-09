@@ -14,14 +14,8 @@
   <style>
     :root{
       --bg:#0b0f14;
-      --card:#121a24;
-      --border:#233042;
       --text:#e8eef6;
       --muted:#a9b7c9;
-      --accent:#ff3b3b;
-      --accent2:#ff8a00;
-      --btn:#1b2a3a;
-      --btnBorder:#2b3c52;
       --shadow:0 18px 40px rgba(0,0,0,.45);
       --radius:18px;
     }
@@ -37,15 +31,23 @@
     }
     .wrap{max-width:980px; margin:0 auto; padding:34px 18px 60px;}
     .top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom:18px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
     }
     .brand{
-      display:flex; flex-direction:column; gap:2px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:54px; height:54px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      object-fit:cover;
+      background:rgba(255,255,255,.04);
     }
     h1{margin:0; font-size:34px; letter-spacing:.2px}
-    .sub{color:var(--muted); font-size:14px; line-height:1.55}
+    .sub{color:var(--muted); font-size:14px; line-height:1.55; margin-top:4px}
     .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08);
@@ -54,23 +56,19 @@
       margin:14px 0;
       box-shadow:var(--shadow);
     }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:12px;
-      margin-top:12px;
+    .hero{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      object-fit:cover;
+      background:rgba(255,255,255,.03);
     }
-    @media (max-width: 880px){ .grid{grid-template-columns:1fr} }
-    .kpi{
-      padding:14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(0,0,0,.16);
-    }
-    .kpi b{display:block; margin-bottom:6px}
-    .kpi span{color:var(--muted); font-size:13px; line-height:1.45}
+
     a{color:#7ab7ff; text-decoration:none}
     a:hover{text-decoration:underline}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px;
@@ -89,22 +87,13 @@
       border:none;
       color:#0b0f14;
     }
-    .tag{
-      display:inline-flex;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      color:rgba(232,238,246,.85);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
+
     .title{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       margin-bottom:8px;
     }
     .title b{font-size:15px}
+
     code{
       background:#0b121a;
       padding:2px 8px;
@@ -122,9 +111,9 @@
       background:rgba(0,0,0,.20);
     }
     .small{font-size:12px; color:var(--muted); line-height:1.55; margin-top:10px}
+    .divider{height:1px; background:rgba(255,255,255,.08); margin:12px 0}
     .foot{margin-top:12px; color:rgba(232,238,246,.72); font-size:12px; line-height:1.55}
     .warn{color:rgba(255,255,255,.9)}
-    .divider{height:1px; background:rgba(255,255,255,.08); margin:12px 0}
   </style>
 </head>
 
@@ -133,22 +122,33 @@
 
     <div class="top">
       <div class="brand">
-        <span class="tag">Community Meme Token</span>
-        <h1>Anti Epstein SOL</h1>
-        <div class="sub">No promises. No affiliation. Official links only. Verify the CA.</div>
+        <!-- LOGO (assets/logo.png) -->
+        <img class="logo" src="assets/logo.png" alt="Logo"
+             onerror="this.style.display='none'">
+        <div>
+          <h1>Anti Epstein SOL</h1>
+          <div class="sub">No promises. No affiliation. Official links only. Verify the CA.</div>
+        </div>
       </div>
 
       <div class="row">
         <a class="btn" href="https://x.com/AntiEpsteinSOL" target="_blank" rel="noopener">X: @AntiEpsteinSOL</a>
         <a class="btn" href="https://t.me/AntiEpsteinToken" target="_blank" rel="noopener">Telegram</a>
-        <a class="btn primary" href="buy.html">Click Buy</a>
+
+        <!-- ✅ Click Buy: SAME TAB, DIRECT pump.fun (NO buy.html) -->
+        <a class="btn primary" id="buyBtnTop" href="#">Click Buy</a>
       </div>
+    </div>
+
+    <!-- HERO / BANNER (assets/hero.png) -->
+    <div class="card" style="padding:12px">
+      <img class="hero" src="assets/hero.png" alt="Banner"
+           onerror="this.outerHTML=''">
     </div>
 
     <div class="card">
       <div class="title">
         <b>Mission</b>
-        <span class="tag" style="opacity:.9">Transparency First</span>
       </div>
 
       <div class="sub" style="font-size:14px">
@@ -156,19 +156,8 @@
         This is a community-led meme token — not a promise of profit. Share only official links and verify everything.
       </div>
 
-      <div class="grid">
-        <div class="kpi">
-          <b>Verify First</b>
-          <span>Always confirm the contract address (CA). Beware of copycats and fake links.</span>
-        </div>
-        <div class="kpi">
-          <b>Anti-Scam Policy</b>
-          <span>No “guaranteed profit”, no “insider info”, no fake partnerships. If you see hype, assume scam.</span>
-        </div>
-        <div class="kpi">
-          <b>Not Financial Advice</b>
-          <span>Crypto is risky and volatile. Do your own research and only risk what you can afford to lose.</span>
-        </div>
+      <div class="small">
+        Anti-scam policy: No “guaranteed profit”, no “insider info”, no fake partnerships. If you see hype, assume scam.
       </div>
     </div>
 
@@ -189,22 +178,19 @@
 
     <div class="card">
       <div class="title">
-        <b>How to Buy</b>
-        <a class="btn" href="buy.html">Go to Buy Link</a>
+        <b>Buy</b>
       </div>
 
-      <div class="sub">
-        1) Click <b>Click Buy</b> → you will be redirected to the official pump.fun page.<br/>
-        2) On the destination page, verify the token CA matches the CA shown above.<br/>
-        3) Proceed only if you understand the risks. Never trust DMs with “special deals”.
+      <!-- ✅ Tek buton, direkt pump.fun -->
+      <a class="btn primary" id="buyBtnMain" href="#" style="margin-top:6px">Go to Pump.fun</a>
+
+      <div class="small">
+        Important: Verify the CA matches the CA shown above. Beware of copycats and fake links.
       </div>
     </div>
 
     <div class="card">
-      <div class="title">
-        <b>Disclaimer</b>
-      </div>
-
+      <div class="title"><b>Disclaimer</b></div>
       <div class="sub">
         This is a meme token for community purposes. Nothing here is financial advice.
         We do not guarantee listings, profits, or outcomes. Always do your own research.
@@ -213,8 +199,8 @@
       <div class="divider"></div>
 
       <div class="foot">
-        <span class="warn"><b>No affiliation:</b></span> This project is not affiliated with any person, entity, or organization referenced by name in public discussions.
-        It is a community stance and an official-links hub to reduce impersonation and scams.
+        <span class="warn"><b>No affiliation:</b></span>
+        This project is not affiliated with any person, entity, or organization referenced by name in public discussions.
       </div>
     </div>
 
@@ -222,27 +208,29 @@
   </div>
 
   <script>
-    // ====== EDIT THIS (BUY LINK) ======
-    // If your pump.fun link is different, change it here and in buy.html.
+    // ✅ PUMP.FUN LINK (DIRECT)
     const BUY_URL = "https://pump.fun/coin/8ydTGTnEvLMLahVvrZFndpp93gm4ZpLNy15N1dLspump";
-    // ================================
 
+    // Set buy buttons (same-tab)
+    document.getElementById("buyBtnTop").href = BUY_URL;
+    document.getElementById("buyBtnMain").href = BUY_URL;
+
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Copy CA
     const copyBtn = document.getElementById('copyCa');
     const caEl = document.getElementById('ca');
 
     copyBtn.addEventListener('click', async () => {
       const ca = caEl.textContent.trim();
       if (!ca) return;
-
       try {
         await navigator.clipboard.writeText(ca);
         const old = copyBtn.textContent;
         copyBtn.textContent = 'Copied ✓';
         setTimeout(() => (copyBtn.textContent = old), 1100);
       } catch (e) {
-        // fallback for older browsers
         const ta = document.createElement('textarea');
         ta.value = ca;
         document.body.appendChild(ta);
@@ -254,11 +242,6 @@
         setTimeout(() => (copyBtn.textContent = old), 1100);
       }
     });
-
-    // Pass BUY_URL to buy.html via querystring (optional)
-    // If you prefer, you can hardcode BUY_URL only in buy.html and remove this.
-    // Example: buy.html?u=https://pump.fun/coin/...
-    // Here we keep buy.html simple and also hardcode there.
   </script>
 </body>
 </html>
