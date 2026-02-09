@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anti Epstein Token</title>
+  <title>Anti Epstein SOL - Token</title>
   <meta name="description" content="Anti Epstein Token — community meme token with a clear anti-scam policy." />
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:#0b0f14; color:#e8eef6;}
@@ -48,8 +48,32 @@
 
     <div class="muted">© <span id="y"></span> Anti Epstein Token</div>
   </div>
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+ <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const copyBtn = document.getElementById('copyCa');
+  const caEl = document.getElementById('ca');
+
+  copyBtn.addEventListener('click', async () => {
+    const ca = caEl.textContent.trim();
+    if (!ca || ca === 'TBA') return;
+    try {
+      await navigator.clipboard.writeText(ca);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => (copyBtn.textContent = 'Copy CA'), 1200);
+    } catch (e) {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = ca;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => (copyBtn.textContent = 'Copy CA'), 1200);
+    }
+  });
+</script>
+
 </body>
 </html>
